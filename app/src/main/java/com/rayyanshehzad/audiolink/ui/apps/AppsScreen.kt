@@ -1,5 +1,7 @@
 package com.rayyanshehzad.audiolink.ui.apps
 
+import androidx.compose.runtime.getValue //added
+import androidx.compose.runtime.setValue //added
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
