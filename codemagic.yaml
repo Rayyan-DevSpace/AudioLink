@@ -1,0 +1,25 @@
+workflows:
+  android-workflow:
+    name: AudioLink Android Build
+    max_build_duration: 60
+    environment:
+      groups:
+        - android-signing
+      vars:
+        PACKAGE_NAME: "com.example.audiolink"
+      node: latest
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: main
+          include: true
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+      - name: Build Android App
+        script: |
+          ./gradlew assembleDebug
+    artifacts:
+      - app/build/outputs/apk/**/*.apk
